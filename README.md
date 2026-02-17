@@ -6,7 +6,7 @@ A premium, monochromatic desktop suite for GNOME, inspired by the high-contrast 
 
 ## 📷 Screenshots
 
-![Image](https://github.com/user-attachments/assets/e5b12125-3ab4-4e47-b541-66a3e3929132)
+![Image](PROJECT-ESSENTIAL-GNOME-THEME.jpg)
 
 
 ---
