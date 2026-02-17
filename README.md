@@ -1,152 +1,82 @@
-# ✨ NothingOS GNOME – A Minimalist Manjaro Desktop Experience
+# ✨ NothingOS GNOME – A Minimalist, Monochromatic Desktop Environment**
+This repository contains a curated NothingOS-inspired desktop environment for GNOME. Designed for those who value the "Essential," it brings the clean, monochrome aesthetic of Nothing’s design language to Linux—focusing on polished typography, glassmorphism, and structural simplicity.
 
-This is a **NothingOS-inspired desktop build** for **Manjaro Linux (GNOME edition)**. It's designed to bring the clean, monochrome aesthetic of Nothing's design philosophy to the Linux desktop — with polished widgets, blurred transparency, and a cohesive theme setup.
+📷 Screenshots
+[Place your updated screenshots here showing the GNOME Shell and Eww widgets in action]
 
----
+🚀 Theme Components
+⚙️ Essential Shell — A custom GNOME Shell theme that styles the top panel, notifications, and search.
 
-## 📷 Screenshots
+🎨 GTK Theme — Dark/Light monochromatic styles for application windows.
 
-![Image](https://github.com/user-attachments/assets/e5b12125-3ab4-4e47-b541-66a3e3929132)
+🧱 Eww Widgets — Custom interactive widgets (Time, System Stats, Music) built with Elkowar's Wacky Widgets.
 
----
+📈 Conky Lite — A distraction-free system monitor for the minimalist desktop.
 
-## 🚀 Features
+🖼 Wallpapers — A collection of high-resolution, Nothing-inspired wallpapers.
 
-- ⚙️ **GNOME Shell Theme** — Clean, flat, and monochrome with subtle animations  
-- 🎨 **GTK Theme** — Matches the Shell theme for a unified look  
-- 🖥 **Alacritty Config** — Transparency, blur, and font matching NothingOS style  
-- 🧱 **Eww Widgets** — Interactive status bar with time, date, weather, system stats, and music  
-- 📈 **Conky Setup** — Optional low-resource alternative to Eww    
-- 🖼 **Wallpapers** — Custom and curated Nothing-style backgrounds  
+🧰 Dependencies
+Before installing, ensure your system has the following tools.
 
----
-## 🧰 Dependencies Installation
+📦 Install on Debian / Ubuntu / Pop!_OS
+Bash
+# Core Tools
+sudo apt update && sudo apt install -y gnome-tweaks gnome-shell-extensions conky-all git alacritty
 
-This setup uses **Conky** (for system widgets) and **Eww** (ElKowars Wacky Widgets). Make sure both are installed before proceeding.
-
-### 📦 Install on Different Distros
-
-#### 🔹 Arch Linux / Manjaro
-```bash
-sudo pacman -S conky eww
-```
-#### 🔹 Debian / Ubuntu
-```bash
-sudo apt install conky-all
-sudo apt install libgtk-3-dev libglib2.0-dev libpango1.0-dev libgdk-pixbuf2.0-dev libjson-glib-dev rustc cargo git
-
-# Clone and build Eww
-git clone https://github.com/elkowar/eww.git
-cd eww
-cargo build --release
-sudo cp target/release/eww /usr/local/bin/
-```
-#### Fedora
-```bash
-sudo dnf install conky
-
-# Eww dependencies
-sudo dnf install gtk3-devel glib2-devel pango-devel gdk-pixbuf2-devel json-glib-devel rust cargo git
-
-# Clone and build Eww
-git clone https://github.com/elkowar/eww.git
-cd eww
-cargo build --release
-sudo cp target/release/eww /usr/local/bin/
-```
-#### NixOS
-```nix
-environment.systemPackages = with pkgs; [
-  conky
-  eww
-];
-```
----
-
-## 🛠 Installation
-
-> ⚠️ **Use at your own risk.** This is a personal config and may require adjustments based on your system.
-
-### 1. Clone the Repo
-
-```bash
+# Eww Build Dependencies (Build from source for best performance)
+sudo apt install -y libgtk-3-dev libglib2.0-dev libpango1.0-dev libgdk-pixbuf2.0-dev libjson-glib-dev rustc cargo
+📦 Install on Arch / Manjaro
+Bash
+sudo pacman -S gnome-tweaks gnome-shell-extensions conky alacritty eww
+🛠 Installation
+1. Clone the Repository
+Bash
 git clone https://github.com/HyenaDesign/nothingos-gnome-manjaro
 cd nothingos-gnome-manjaro
-```
-### 2. Copy the configs
+2. Deploy Assets
+Configs are modular. You can choose to copy the entire suite or just specific parts:
 
-Configs are modular. Copy only what you want:
+Bash
+# Copy Application & Shell Themes
+mkdir -p ~/.themes && cp -r .themes/* ~/.themes/
 
-```bash
+# Copy Icons
+mkdir -p ~/.icons && cp -r .icons/* ~/.icons/
+
+# Copy Widget & Terminal Configs
 cp -r .config/alacritty ~/.config/
 cp -r .config/eww ~/.config/
 cp -r .config/conky ~/.config/
-cp -r .themes/NothingOS-GTK ~/.themes/
-cp -r .icons/NothingOS-Icons ~/.icons/
-```
-> Replace `~` with your actual home path if needed.
----
-### 3. Open widgets and Conky
-```bash
-conky -c ~/path/to/your/conky
-# for EWW widgets
-eww open name-of-widget
-# example eww open day-of-month
-# example conky -c ~/.conky/nothing-phone/nothing-phone-simple.conf
-```
----
-### 4. Apply Themes
+3. Apply via GNOME Tweaks
+Open GNOME Tweaks.
 
-Use **GNOME Tweaks** to apply:
+Navigate to Appearance.
 
-- GTK Theme: `NothingOS-GTK`  
-- Shell Theme: `NothingOS-Shell`  
-- Icons: `NothingOS-Icons`  
-- Font: `Inter`, `Product Sans`, or `Roboto`  
+Set Legacy Applications to NothingOS-GTK.
 
----
+Set Shell to NothingOS-Shell (Requires "User Themes" extension enabled).
 
-## 🌦 API Keys
+Set Icons to NothingOS-Icons.
 
-If you're using the weather widget (Eww or Conky), replace the placeholder in:
+🌦 Widget Configuration (Eww)
+To use the interactive dashboard, ensure the eww daemon is running.
 
-`eww/scripts/get-weather.sh`
+Bash
+# Start the daemon
+eww daemon
 
-With your own API key:
+# Open the NothingOS Dashboard
+eww open nothing-dashboard
+To set your weather location, edit your API key in ~/.config/eww/scripts/get-weather.sh.
 
-API_KEY="YOUR_API_KEY_HERE"
+🙋 FAQ
+Q: Does this work on Wayland? A: The Shell and GTK themes work perfectly. Some Eww widgets may require specific configuration for Wayland layers; check the eww.yuck file for details.
 
+Q: How do I change the font to the Dot-Matrix style? A: Install the NDot 57 font and select it as the "Interface Font" in GNOME Tweaks.
 
-You can get a free key from:
-- https://weatherapi.com  
-- https://openweathermap.org  
+❤️ Credits
+Design Philosophy: Inspired by Nothing.
 
----
+Icons: Based on the Papirus Development Team.
 
-## 🙋 FAQ
-
-**Q: Will this work on other distros?**  
-A: Yes, with tweaks. It's built for Manjaro GNOME but works on most GNOME-based setups.
-
-**Q: What if Eww doesn't show up properly?**  
-A: Make sure you're using X11 (not Wayland) and have `eww` installed from source or your package manager.
-
-**Q: Can I fork or contribute?**  
-A: Absolutely! Feel free to fork, open issues, or submit pull requests.
-
----
-
-## ❤️ Credits
-
-- Inspired by the **NothingOS** design language  
-- Built with:  
-  - [Eww](https://github.com/elkowar/eww)  
-  - [Alacritty](https://github.com/alacritty/alacritty)  
-  - [Conky](https://github.com/brndnmtthws/conky)  
-  - [Papirus Icons](https://github.com/PapirusDevelopmentTeam)  
-
----
-
-## 📢 License
-
-This project is released under the [GPL3 License](LICENSE), unless otherwise noted.
+Widgets: Built using Eww and Conky.
