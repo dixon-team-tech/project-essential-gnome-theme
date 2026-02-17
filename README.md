@@ -93,8 +93,8 @@ eww open essential-status
 
 ## 📢 Credits
 Inspired by the **NothingOS** design language  
-* **Developed by:** Dixon Team Tech
-* **Design Inspiration:** Nothing OS
+* **Developed by:** Dixon Team Tech - Creators of the Project ESSENTIAL Distro
+* **Design Inspiration:** Nothing OS and HyenaDesign
 * **Core Technologies:** GNOME, Eww, Conky
 
 ---
