@@ -92,7 +92,7 @@ eww open essential-status
 ---
 
 ## 📢 Credits
-
+Inspired by the **NothingOS** design language  
 * **Developed by:** Dixon Team Tech
 * **Design Inspiration:** Nothing OS
 * **Core Technologies:** GNOME, Eww, Conky
@@ -103,10 +103,10 @@ eww open essential-status
 
 [https://github.com/dixon-team-tech/project-essential-gnome-theme/]()
 
+## 📢 📢 📢 📢 License
+
+This project is released under the [GPL3 License](LICENSE), unless otherwise noted.
+
+
 ---
 
-### **Pro Tip for your Repo**
-
-In the `README`, it's always helpful to include a **"One-Liner Install"** for people who just want to try it quickly.
-
-**Would you like me to write a `setup.sh` script for you?** It would automate the `mkdir`, `cp`, and even the dependency checks, so your users just have to run `bash setup.sh` and they're done.
