@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Create directories
+# Create the directories
 mkdir -p ~/.config/eww/scripts
 mkdir -p ~/.config/eww/images
 
