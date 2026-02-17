@@ -1,82 +1,112 @@
-# ✨ NothingOS GNOME – A Minimalist, Monochromatic Desktop Environment**
-This repository contains a curated NothingOS-inspired desktop environment for GNOME. Designed for those who value the "Essential," it brings the clean, monochrome aesthetic of Nothing’s design language to Linux—focusing on polished typography, glassmorphism, and structural simplicity.
+# ✨ Project Essential GNOME Theme
 
-📷 Screenshots
-[Place your updated screenshots here showing the GNOME Shell and Eww widgets in action]
+A premium, monochromatic desktop suite for GNOME, inspired by the high-contrast and structural design language of **Nothing OS**. This theme is the visual core of the **Project Essential** ecosystem, designed to provide a distraction-free, "essential" computing experience.
 
-🚀 Theme Components
-⚙️ Essential Shell — A custom GNOME Shell theme that styles the top panel, notifications, and search.
+---
 
-🎨 GTK Theme — Dark/Light monochromatic styles for application windows.
+## 📷 Screenshots
 
-🧱 Eww Widgets — Custom interactive widgets (Time, System Stats, Music) built with Elkowar's Wacky Widgets.
+![Image](https://github.com/user-attachments/assets/e5b12125-3ab4-4e47-b541-66a3e3929132)
 
-📈 Conky Lite — A distraction-free system monitor for the minimalist desktop.
 
-🖼 Wallpapers — A collection of high-resolution, Nothing-inspired wallpapers.
+---
 
-🧰 Dependencies
-Before installing, ensure your system has the following tools.
+## 🚀 Features
 
-📦 Install on Debian / Ubuntu / Pop!_OS
-Bash
-# Core Tools
-sudo apt update && sudo apt install -y gnome-tweaks gnome-shell-extensions conky-all git alacritty
+* ⚙️ **Essential Shell** — Full support for GNOME 45+ Shell, featuring custom dot-matrix activity indicators and frosted glass panels.
+* 🎨 **GTK 4 / Libadwaita** — Modern monochromatic styling for system apps and settings.
+* 🧱 **Eww Dashboards** — Floating "Essential" widgets for time, weather, and system telemetry.
+* 📉 **Conky Minimalism** — A lightweight, persistent desktop clock and system monitor.
+* 🖼 **Official Wallpapers** — Curated backgrounds optimized for the Project Essential palette.
 
-# Eww Build Dependencies (Build from source for best performance)
+---
+
+## 🧰 Dependencies
+
+To ensure all elements (blur, widgets, and fonts) render correctly, install the following:
+
+### 📦 Debian 13 (Trixie) / Ubuntu
+
+```bash
+# System Tools
+sudo apt update && sudo apt install -y gnome-tweaks gnome-shell-extension-manager conky-all git alacritty
+
+# Eww (Widgets) Dependencies
 sudo apt install -y libgtk-3-dev libglib2.0-dev libpango1.0-dev libgdk-pixbuf2.0-dev libjson-glib-dev rustc cargo
-📦 Install on Arch / Manjaro
-Bash
-sudo pacman -S gnome-tweaks gnome-shell-extensions conky alacritty eww
-🛠 Installation
-1. Clone the Repository
-Bash
-git clone https://github.com/HyenaDesign/nothingos-gnome-manjaro
-cd nothingos-gnome-manjaro
-2. Deploy Assets
-Configs are modular. You can choose to copy the entire suite or just specific parts:
 
-Bash
-# Copy Application & Shell Themes
-mkdir -p ~/.themes && cp -r .themes/* ~/.themes/
+```
 
-# Copy Icons
-mkdir -p ~/.icons && cp -r .icons/* ~/.icons/
+---
 
-# Copy Widget & Terminal Configs
-cp -r .config/alacritty ~/.config/
-cp -r .config/eww ~/.config/
-cp -r .config/conky ~/.config/
-3. Apply via GNOME Tweaks
-Open GNOME Tweaks.
+## 🛠 Installation
 
-Navigate to Appearance.
+### 1. Clone the Official Repo
 
-Set Legacy Applications to NothingOS-GTK.
+```bash
+git clone https://github.com/dixon-team-tech/project-essential-gnome-theme/
+cd project-essential-gnome-theme
 
-Set Shell to NothingOS-Shell (Requires "User Themes" extension enabled).
+```
 
-Set Icons to NothingOS-Icons.
+### 2. Deploy Configs & Themes
 
-🌦 Widget Configuration (Eww)
-To use the interactive dashboard, ensure the eww daemon is running.
+Use the following commands to move the assets to their correct locations:
 
-Bash
-# Start the daemon
+```bash
+# Setup Themes and Icons
+mkdir -p ~/.themes ~/.icons
+cp -r themes/* ~/.themes/
+cp -r icons/* ~/.icons/
+
+# Setup App Configs
+cp -r config/alacritty ~/.config/
+cp -r config/eww ~/.config/
+cp -r config/conky ~/.config/
+
+```
+
+### 3. Application Settings
+
+Open **GNOME Tweaks** and apply:
+
+* **Legacy Applications:** `Project-Essential-GTK`
+* **Shell Theme:** `Project-Essential-Shell` *(Requires 'User Themes' extension)*
+* **Icons:** `Project-Essential-Icons`
+* **Typography:** Set all fonts to **Inter** or **NDot 57**.
+
+---
+
+## 🌦 Widget Activation
+
+Project Essential uses **Eww** for its signature widgets.
+
+```bash
+# Start the widget daemon
 eww daemon
 
-# Open the NothingOS Dashboard
-eww open nothing-dashboard
-To set your weather location, edit your API key in ~/.config/eww/scripts/get-weather.sh.
+# Launch the primary dashboard
+eww open essential-status
 
-🙋 FAQ
-Q: Does this work on Wayland? A: The Shell and GTK themes work perfectly. Some Eww widgets may require specific configuration for Wayland layers; check the eww.yuck file for details.
+```
 
-Q: How do I change the font to the Dot-Matrix style? A: Install the NDot 57 font and select it as the "Interface Font" in GNOME Tweaks.
+---
 
-❤️ Credits
-Design Philosophy: Inspired by Nothing.
+## 📢 Credits
 
-Icons: Based on the Papirus Development Team.
+* **Developed by:** Dixon Team Tech
+* **Design Inspiration:** Nothing OS
+* **Core Technologies:** GNOME, Eww, Conky
 
-Widgets: Built using Eww and Conky.
+---
+
+## 🔗 Official Repository
+
+[https://github.com/dixon-team-tech/project-essential-gnome-theme/]()
+
+---
+
+### **Pro Tip for your Repo**
+
+In the `README`, it's always helpful to include a **"One-Liner Install"** for people who just want to try it quickly.
+
+**Would you like me to write a `setup.sh` script for you?** It would automate the `mkdir`, `cp`, and even the dependency checks, so your users just have to run `bash setup.sh` and they're done.
